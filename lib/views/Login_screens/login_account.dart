@@ -156,7 +156,10 @@ class LoginAccount extends StatelessWidget {
 
                   // Login Button
                   SplashButton(
-                    onTap: () {},
+                    onTap: () {
+                                       Navigator.pushNamed(context, '/home_main');
+
+                    },
                     width: double.infinity,
                     height: 56,
                     child: Text('Login', style: TextStyle(

@@ -13,4 +13,9 @@ class AppImages {
   static const String lockIcon = 'assets/images/lockicon.png';
   static const String messageIcon = 'assets/images/messageIcon.png';
   static const String telephone = 'assets/images/telephoneicon.png';
+  static const String home = 'assets/images/home.png';
+  static const String profile = 'assets/images/profile.png';
+  static const String favourite = 'assets/images/favourite.png';
+  static const String cart = 'assets/images/cart.png';                                
+  static const String women_With_Cart3 = 'assets/images/femalewithcart3.png';
 }

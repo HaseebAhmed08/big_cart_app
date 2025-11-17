@@ -17,10 +17,10 @@ class CreateAccount extends StatelessWidget {
     final theme = Theme.of(context).textTheme;
 
     return Scaffold(
-      // resizeToAvoidBottomInset: false, // bottom card ko fix rakhta hai
+      resizeToAvoidBottomInset: false, // bottom card ko fix rakhta hai
 
       body: Stack(
-        // fit: StackFit.expand,
+        fit: StackFit.expand,
         children: [
           // Background Image
           Positioned(
@@ -29,9 +29,9 @@ class CreateAccount extends StatelessWidget {
             right: 0,
             height: MediaQuery.of(context).size.height * 0.6,
             child: Image.asset(
-              AppImages.women_With_Cart2,
+              AppImages.women_With_Cart3,
               fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
+              // alignment: Alignment.topCenter,
             ),
           ),
 
@@ -141,7 +141,11 @@ _buildTextField(
 
                   // Login Button
                   SplashButton(
-                    onTap: () {},
+                    onTap: () {
+                 Navigator.pushNamed(context, '/home_main');
+
+                      
+                    },
                     width: double.infinity,
                     height: 56,
                     child: Text('Login', style: TextStyle(
