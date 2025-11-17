@@ -1,10 +1,11 @@
-import 'package:cartapp/viewmodels/splash/splash_viewmodel.dart';
+import 'package:cartapp/viewmodels/login_screen_logic/login_logic.dart';
+import 'package:cartapp/viewmodels/splash_logic/splash_logic.dart';
 import 'package:cartapp/views/Login_screens/login_account.dart';
+import 'package:cartapp/views/Login_screens/login_create_account.dart';
 import 'package:cartapp/views/splash_screens/splash1.dart';
 import 'package:cartapp/views/Login_screens/Login_wellcome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -14,17 +15,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => SplashViewModel(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SplashViewModel()),
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/splash',
         routes: {
           '/splash': (context) => const SplashFirst(),
-          '/welcomeToLogin': (context) =>  WellComeLogin(),
+          '/welcomeToLogin': (context) => WellComeLogin(),
           '/LoginAccount': (context) => const LoginAccount(),
-
-          
+           '/login_create_account': (context) => const CreateAccount(), 
         },
       ),
     );

@@ -1,6 +1,6 @@
 
 import 'package:cartapp/utils/splash_button.dart';
-import 'package:cartapp/viewmodels/splash/splash_viewmodel.dart';
+import 'package:cartapp/viewmodels/splash_logic/splash_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cartapp/core/app_colors.dart';
@@ -115,7 +115,7 @@ class _SplashFirstState extends State<SplashFirst> {
                     (dotIndex) => AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       margin: const EdgeInsets.symmetric(horizontal: 5),
-                      width: viewModel.currentIndex == dotIndex ? 24 : 10,
+                      width: viewModel.currentIndex == dotIndex ? 10 : 10,
                       height: 10,
                       decoration: BoxDecoration(
                         color: viewModel.currentIndex == dotIndex

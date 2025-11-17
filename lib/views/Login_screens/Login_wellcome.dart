@@ -2,6 +2,7 @@ import 'package:cartapp/core/app_colors.dart';
 import 'package:cartapp/core/app_images.dart';
 import 'package:cartapp/core/app_textstyle.dart';
 import 'package:cartapp/utils/splash_button.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class WellComeLogin extends StatelessWidget {
@@ -88,37 +89,82 @@ class WellComeLogin extends StatelessWidget {
                   SizedBox(height: 20),
 
                   // Continue with Google Button
-                  SizedBox(
-                    width: double.infinity,
-                    child: OutlinedButton.icon(
-                      onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/LoginAccount');
-                      },
-                      icon: Image.asset(
-                        AppImages.GoogleIcon,
-                        width: 22,
-                        height: 22,
+                  // SizedBox(
+                  //   width: double.infinity,
+                  //   child: OutlinedButton.icon(
+                    
+                  //     onPressed: () {
+                  //     Navigator.pushReplacementNamed(context, '/LoginAccount');
+                  //     },
+                  //     icon: Image.asset(
+                  //       AppImages.GoogleIcon,
+                  //       width: 22,
+                  //       height: 22,
                        
-                      ),
-                      label: Text(
-                        'Continue with google',
-                        style: appTextTheme.bodyMedium
-                      ),
-                      style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 14),
-                        side: BorderSide(color: Colors.grey.shade300),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                  ),
+                  //     ),
+                  //     label: Text(
+                  //       'Continue with google',
+                  //       style: appTextTheme.bodyMedium
+                  //     ),
+                  //     style: OutlinedButton.styleFrom(
+                  //       padding: EdgeInsets.symmetric(vertical: 14),
+                  //       side: BorderSide(color: Colors.grey.shade300),
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(12),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+
+
+
+SizedBox(
+  width: double.infinity,
+  child: OutlinedButton(
+    onPressed: () {
+      Navigator.pushReplacementNamed(context, '/LoginAccount');
+    },
+    style: OutlinedButton.styleFrom(
+      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+      side: BorderSide(color: Colors.grey.shade300),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start, // icon left
+      children: [
+              SizedBox(width: 40),
+
+        Image.asset(
+          AppImages.GoogleIcon,
+          width: 22,
+          height: 22,
+        ),
+        SizedBox(width: 30),
+        Text(
+          'Continue with Google',
+          style: appTextTheme.bodyMedium,
+        ),
+      ],
+    ),
+  ),
+),
 
                   SizedBox(height: 16),
 
                   
-SplashButton(child: Text('Create an account'), 
-onTap:(){}, width: double.infinity, height: 50),
+SplashButton(
+child: Text('Create an account',style: TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+    fontSize: 15,
+  ),), 
+onTap:(){
+              Navigator.pushNamed(context, '/login_create_account');
+
+}, width: double.infinity, height: 50),
 
 
 
@@ -138,7 +184,13 @@ onTap:(){}, width: double.infinity, height: 50),
                               style: TextStyle(
                                 color: AppColors.primaryDark,
                                 fontWeight: FontWeight.bold,
+
                               ),
+                               recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              // yahan pe aapka navigation ya action
+      Navigator.pushReplacementNamed(context, '/LoginAccount');
+            },
                             ),
                           ],
                         ),

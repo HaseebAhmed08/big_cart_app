@@ -8,7 +8,7 @@ class AppColors {
 
   // 🔹 Text Colors
   static const Color textPrimary = Color(0xFF868889); // Normal text
-  static const Color textLink = Color(0xFF1A0DAB);    // Hyperlink blue
+  static const Color textLink = Color(0xFF407EC7);    // Hyperlink blue
 
   // 🔹 Border Color
   static const Color border = Color(0xFFEBEBEB);
