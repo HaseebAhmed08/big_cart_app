@@ -1,3 +1,4 @@
+import 'package:cartapp/core/app_colors.dart';
 import 'package:flutter/material.dart';
 
 final TextTheme appTextTheme = TextTheme(
@@ -5,6 +6,7 @@ final TextTheme appTextTheme = TextTheme(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.bold,
     fontSize: 30,
+    color: Colors.black87
   ),
   titleMedium: TextStyle(
     fontFamily: 'Poppins',
@@ -13,7 +15,8 @@ final TextTheme appTextTheme = TextTheme(
   ),
   bodyMedium: TextStyle(
     fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.bold,
+    color: AppColors.textPrimary,
     fontSize: 15,
   ),
   labelMedium: TextStyle(
