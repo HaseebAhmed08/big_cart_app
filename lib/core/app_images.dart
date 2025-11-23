@@ -18,4 +18,24 @@ class AppImages {
   static const String favourite = 'assets/images/favourite.png';
   static const String cart = 'assets/images/cart.png';                                
   static const String women_With_Cart3 = 'assets/images/femalewithcart3.png';
+  static const String deal1 = 'assets/images/deals1.png';                                
+  static const String filter = 'assets/images/filters.png';                                
+  static const String search = 'assets/images/search.png';        
+  // home category images
+  static const String vagetables = 'assets/images/vagetables.png';
+  static const String fruits = 'assets/images/fruits.png';        
+  static const String beverages = 'assets/images/beverages.png';
+  static const String groceries = 'assets/images/groceries.png';        
+  static const String edibleOils = 'assets/images/edibleoils.png';        
+
+    // home cart items images
+
+  static const String aocado = 'assets/images/aocado.png';        
+  static const String broccoli = 'assets/images/broccoli.png';        
+  static const String grapes = 'assets/images/grapes.png';        
+  static const String peach = 'assets/images/peach.png';        
+  static const String pineapple = 'assets/images/pineapple.png';        
+  static const String pomegranate = 'assets/images/pomegranate.png';        
+
+
 }

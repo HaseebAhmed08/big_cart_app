@@ -1,13 +1,26 @@
-// lib/viewmodels/bottom_tab_viewmodel.dart
 import 'package:flutter/material.dart';
 
-class HomeMainModel extends ChangeNotifier {
-  int _currentIndex = 0; // default tab
+// 1. TextModel: यह लॉजिक और डेटा को रखता है
+class HomeMainLogic extends ChangeNotifier {
+  // इनपुट को नियंत्रित करने के लिए Controller
+  final TextEditingController _textController = TextEditingController();
+  TextEditingController get textController => _textController;
 
-  int get currentIndex => _currentIndex;
+  // इनपुट टेक्स्ट को स्टोर करने के लिए एक स्ट्रिंग
+  String _currentText = '';
+  String get currentText => _currentText;
 
-  void changeTab(int index) {
-    _currentIndex = index;
-    notifyListeners(); // UI ko update karne ke liye
+  // 2. Logic Function
+  void updateText(String newText) {
+    _currentText = newText;
+    // यह फ़ंक्शन सभी सुनने वाले विजेट्स (Consumers) को बताता है कि डेटा बदल गया है
+    notifyListeners();
+  }
+
+  // 3. Controller को dispose करने के लिए (ज़रूरी)
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
   }
 }

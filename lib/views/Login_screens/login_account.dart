@@ -94,11 +94,7 @@ class LoginAccount extends StatelessWidget {
                   // Welcome back !
                   Text(
                     'Welcome back !',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+                    style: appTextTheme.headlineLarge,
                   ),
                   const SizedBox(height: 8),
 
@@ -157,7 +153,7 @@ class LoginAccount extends StatelessWidget {
                   // Login Button
                   SplashButton(
                     onTap: () {
-                                       Navigator.pushNamed(context, '/home_main');
+                                       Navigator.pushNamed(context, '/bottom_bar');
 
                     },
                     width: double.infinity,

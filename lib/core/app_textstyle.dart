@@ -13,6 +13,31 @@ final TextTheme appTextTheme = TextTheme(
     fontWeight: FontWeight.w600,
     fontSize: 20,
   ),
+
+  headlineLarge: TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
+    fontSize: 25,
+  ),
+headlineMedium: TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimary,
+    fontSize: 15,
+  ),
+
+
+headlineSmall: TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimary,
+    fontSize: 15,
+  ),
+
+
+
+
   bodyMedium: TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.bold,
@@ -24,4 +49,11 @@ final TextTheme appTextTheme = TextTheme(
     fontWeight: FontWeight.w500,
     fontSize: 12,
   ),
+
+
+
+
+
+
+
 );

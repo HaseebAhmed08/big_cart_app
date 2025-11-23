@@ -73,18 +73,14 @@ class WellComeLogin extends StatelessWidget {
                   // Title
                   Text(
                     'Welcome',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+                    style: appTextTheme.headlineLarge
                   ),
                   SizedBox(height: 8),
 
                   // Description
                   Text(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy',
-                    style: appTextTheme.bodyMedium
+                    style: appTextTheme.headlineMedium
                   ),
                   SizedBox(height: 20),
 

@@ -95,11 +95,7 @@ class CreateAccount extends StatelessWidget {
                   // Welcome back !
                   Text(
                     'Create account',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+                    style:  appTextTheme.headlineMedium
                   ),
                   const SizedBox(height: 8),
 
@@ -142,7 +138,7 @@ _buildTextField(
                   // Login Button
                   SplashButton(
                     onTap: () {
-                 Navigator.pushNamed(context, '/home_main');
+                 Navigator.pushNamed(context, '/bottom_bar');
 
                       
                     },
