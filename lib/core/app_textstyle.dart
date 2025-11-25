@@ -50,6 +50,15 @@ headlineSmall: TextStyle(
     fontSize: 12,
   ),
 
+  
+ labelSmall: TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
+    fontSize: 18,
+  ),
+
+
 
 
 
