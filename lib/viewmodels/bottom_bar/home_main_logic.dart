@@ -1,4 +1,5 @@
 import 'package:cartapp/core/app_colors.dart';
+import 'package:cartapp/core/app_images.dart';
 import 'package:flutter/material.dart';
 
 // 1. TextModel: यह लॉजिक और डेटा को रखता है
@@ -8,50 +9,37 @@ class HomeMainLogic extends ChangeNotifier {
   TextEditingController get textController => _textController;
 
   // Example images for demo (replace with your assets)
-final List<String> categoryImages = [
-  'assets/images/veg.png',
-  'assets/images/fruit.png',
-  'assets/images/beverage.png',
-  'assets/images/grocery.png',
-  'assets/images/oil.png',
-  'assets/images/household.png',
-];
+  final List<String> categoryImages = [
+    AppImages.vagetables,
+    AppImages.fruits,
+    AppImages.beverages,
+    AppImages.groceries,
+    AppImages.edibleOils,
+    AppImages.vacuum,
+  ];
 
-final List<Color> categoryColors = [
-  AppColors.vegFresh,
-  AppColors.fruitPeach,
-  AppColors.beverageCream,
-  AppColors.groceryLavender,
-  AppColors.oilAqua,
-  AppColors.householdRose,
-];
+  final List<Color> categoryColors = [
+    AppColors.vegFresh,
+    AppColors.fruitPeach,
+    AppColors.beverageCream,
+    AppColors.groceryLavender,
+    AppColors.oilAqua,
+    AppColors.householdRose,
+  ];
 
-
-final List<String> categoryNames = [
-  'Vegetables',
-  'Fruits',
-  'Beverages',
-  'Grocery',
-  'Oil',
-  'Household',
-];
-
-
-  // इनपुट टेक्स्ट को स्टोर करने के लिए एक स्ट्रिंग
-  String _currentText = '';
-  String get currentText => _currentText;
-
-  // 2. Logic Function
-  void updateText(String newText) {
-    _currentText = newText;
-    // यह फ़ंक्शन सभी सुनने वाले विजेट्स (Consumers) को बताता है कि डेटा बदल गया है
-    notifyListeners();
-  }
+  final List<String> categoryNames = [
+    'Vegetables',
+    'Fruits',
+    'Beverages',
+    'Grocery',
+    'Oil',
+    'Household',
+  ];
 
   // 3. Controller को dispose करने के लिए (ज़रूरी)
-  @override
-  void dispose() {
-    _textController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _textController.dispose();
+  //   super.dispose();
+  // }
 }

@@ -26,8 +26,8 @@ class AppImages {
   static const String fruits = 'assets/images/fruits.png';        
   static const String beverages = 'assets/images/beverages.png';
   static const String groceries = 'assets/images/groceries.png';        
-  static const String edibleOils = 'assets/images/edibleoils.png';        
-
+  static const String edibleOils = 'assets/images/edibleoils.png';       
+  static const String vacuum = 'assets/images/vacuum.png';
     // home cart items images
 
   static const String aocado = 'assets/images/aocado.png';        
