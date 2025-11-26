@@ -36,13 +36,14 @@ class BottomBar extends StatelessWidget {
         ],
       ),
 
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      bottomNavigationBar: SafeArea(
+        minimum: const EdgeInsets.fromLTRB(24, 0, 24, 16),
         child: Material(
           elevation: 20,
+          color: Colors.transparent,
           borderRadius: BorderRadius.circular(40),
           child: Container(
-            height: 70,
+            height: 72,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(40),

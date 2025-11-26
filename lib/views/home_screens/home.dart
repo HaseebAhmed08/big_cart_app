@@ -10,14 +10,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
+    final mediaQuery = MediaQuery.of(context);
+    final screenHeight = mediaQuery.size.height;
+    const bottomBarHeight = 110.0;
+    final contentBottomPadding = bottomBarHeight + mediaQuery.padding.bottom + 16;
 
     return Scaffold(
       backgroundColor: Colors.grey[50],
       body: SafeArea(
+        bottom: false,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: EdgeInsets.fromLTRB(16, 8, 16, contentBottomPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
