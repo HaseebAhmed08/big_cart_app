@@ -2,21 +2,14 @@ import 'package:cartapp/core/app_colors.dart';
 import 'package:cartapp/core/app_images.dart';
 import 'package:flutter/material.dart';
 
-// 1. TextModel: यह लॉजिक और डेटा को रखता है
+// 1. TextModel: 
 class HomeMainLogic extends ChangeNotifier {
-  // इनपुट को नियंत्रित करने के लिए Controller
+  // Controller
   final TextEditingController _textController = TextEditingController();
   TextEditingController get textController => _textController;
 
   // Example images for demo (replace with your assets)
-  final List<String> categoryImages = [
-    AppImages.vagetables,
-    AppImages.fruits,
-    AppImages.beverages,
-    AppImages.groceries,
-    AppImages.edibleOils,
-    AppImages.vacuum,
-  ];
+ 
 
   final List<Color> categoryColors = [
     AppColors.vegFresh,
@@ -26,7 +19,14 @@ class HomeMainLogic extends ChangeNotifier {
     AppColors.oilAqua,
     AppColors.householdRose,
   ];
-
+ final List categoryImages = [
+    AppImages.vagetables,
+    AppImages.fruits,
+    AppImages.beverages,
+    AppImages.groceries,
+    AppImages.edibleOils,
+    AppImages.vacuum,
+  ];
   final List<String> categoryNames = [
     'Vegetables',
     'Fruits',

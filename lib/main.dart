@@ -5,6 +5,7 @@ import 'package:cartapp/viewmodels/splash_logic/splash_logic.dart';
 import 'package:cartapp/views/Login_screens/login_account.dart';
 import 'package:cartapp/views/Login_screens/login_create_account.dart';
 import 'package:cartapp/views/home_screens/bottom_bar.dart';
+import 'package:cartapp/views/home_screens/widgets/categories.dart';
 import 'package:cartapp/views/splash_screens/splash1.dart';
 import 'package:cartapp/views/Login_screens/Login_wellcome.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
           '/LoginAccount': (context) => const LoginAccount(),
            '/login_create_account': (context) => const CreateAccount(), 
            '/bottom_bar': (context) => const BottomBar(), 
+           "/categories": (context) => const Categories(),
 
 
         },

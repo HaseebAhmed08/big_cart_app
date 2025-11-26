@@ -8,7 +8,7 @@ class AppImages {
   static const String women_With_Cart = 'assets/images/femalewithcart.png';
   static const String women_With_Cart2 = 'assets/images/femalewithcart2.png';
   static const String GoogleIcon = 'assets/images/google_icon.png';
-  static const String switchIcon = '  assets/images/switch.png';
+  static const String switchIcon = 'assets/images/switch.png';
   static const String eyeIcon = 'assets/images/eyeicon.png';
   static const String lockIcon = 'assets/images/lockicon.png';
   static const String messageIcon = 'assets/images/messageIcon.png';
@@ -20,14 +20,16 @@ class AppImages {
   static const String women_With_Cart3 = 'assets/images/femalewithcart3.png';
   static const String deal1 = 'assets/images/deals1.png';                                
   static const String filter = 'assets/images/filters.png';                                
-  static const String search = 'assets/images/search.png';        
+  static const String search = 'assets/images/search.png';    
+
   // home category images
-  static const String vagetables = 'assets/images/vagetables.png';
-  static const String fruits = 'assets/images/fruits.png';        
-  static const String beverages = 'assets/images/beverages.png';
-  static const String groceries = 'assets/images/groceries.png';        
-  static const String edibleOils = 'assets/images/edibleoils.png';       
-  static const String vacuum = 'assets/images/vacuum.png';
+  static const String vagetables ='assets/images/vagetables.png';
+  static const String fruits ='assets/images/fruits.png';        
+  static const String beverages ='assets/images/beverages.png';
+  static const String groceries ='assets/images/groceries.png';        
+  static const String edibleOils ='assets/images/edibleoils.png';       
+  static const String vacuum ='assets/images/vacuum.png';
+  
     // home cart items images
 
   static const String aocado = 'assets/images/aocado.png';        
