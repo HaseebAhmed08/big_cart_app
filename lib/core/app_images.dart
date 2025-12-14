@@ -23,11 +23,11 @@ class AppImages {
   static const String search = 'assets/images/search.png';    
 
   // home category images
-  static const String vagetables ='assets/images/vagetables.png';
+  static const String vegetables ='assets/images/Vegetables.png';
   static const String fruits ='assets/images/fruits.png';        
-  static const String beverages ='assets/images/beverages.png';
-  static const String groceries ='assets/images/groceries.png';        
-  static const String edibleOils ='assets/images/edibleoils.png';       
+  static const String beverages ='assets/images/beverage 1.png';
+  static const String groceries ='assets/images/grocery.png';        
+  static const String edibleOils ='assets/images/edible oil.png';       
   static const String vacuum ='assets/images/vacuum.png';
   
     // home cart items images

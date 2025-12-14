@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 32),
 
                 // Featured Products
-                _buildSectionTitle('Featured products',(){}),
+                _buildSectionTitle('Featured products',(){Navigator.pushNamed(context, '/featured_products');}),
                 const SizedBox(height: 16),
 
                 // Grid of Products

@@ -153,7 +153,7 @@ class LoginAccount extends StatelessWidget {
                   // Login Button
                   SplashButton(
                     onTap: () {
-                                       Navigator.pushNamed(context, '/bottom_bar');
+                                       Navigator.pushReplacementNamed(context, '/bottom_bar');
 
                     },
                     width: double.infinity,

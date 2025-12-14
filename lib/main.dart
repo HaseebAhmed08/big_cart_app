@@ -5,7 +5,9 @@ import 'package:cartapp/viewmodels/splash_logic/splash_logic.dart';
 import 'package:cartapp/views/Login_screens/login_account.dart';
 import 'package:cartapp/views/Login_screens/login_create_account.dart';
 import 'package:cartapp/views/home_screens/bottom_bar.dart';
-import 'package:cartapp/views/home_screens/widgets/categories.dart';
+import 'package:cartapp/views/home_screens/categories.dart';
+import 'package:cartapp/views/home_screens/featured_products.dart';
+import 'package:cartapp/views/home_screens/product_details.dart';
 import 'package:cartapp/views/splash_screens/splash1.dart';
 import 'package:cartapp/views/Login_screens/Login_wellcome.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/bottom_bar',
+        initialRoute: '/splash',
         routes: {
           '/splash': (context) => const SplashFirst(),
           '/welcomeToLogin': (context) => WellComeLogin(),
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
            '/login_create_account': (context) => const CreateAccount(), 
            '/bottom_bar': (context) => const BottomBar(), 
            "/categories": (context) => const Categories(),
+           "/featured_products": (context) => const FeaturedProductsScreen(),
+           "/product_details": (context) => const ProductDetailsScreen(),
 
 
         },

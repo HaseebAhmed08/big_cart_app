@@ -20,7 +20,7 @@ class HomeMainLogic extends ChangeNotifier {
     AppColors.householdRose,
   ];
  final List categoryImages = [
-    AppImages.vagetables,
+    AppImages.vegetables,
     AppImages.fruits,
     AppImages.beverages,
     AppImages.groceries,
@@ -37,9 +37,9 @@ class HomeMainLogic extends ChangeNotifier {
   ];
 
   // 3. Controller को dispose करने के लिए (ज़रूरी)
-  // @override
-  // void dispose() {
-  //   _textController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
 }
