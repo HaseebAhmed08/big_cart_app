@@ -32,18 +32,39 @@ class Favorite extends StatelessWidget {
   childAspectRatio: 0.774,
             ),
             itemCount: favProducts.length,
-            itemBuilder: (context, index) {
-              final product = favProducts[index];
-              return ProductCard(
-                id: product['id'],
-                title: product['title'],
-                subtitle: product['subtitle'],
-                price: product['price'],
-                imageUrl: product['imageUrl'],
-                isNew: false,
-                
-              );
-            },
+          itemBuilder: (context, index) {
+  final favMap = favProducts[index]; // Yeh Map hai
+
+  // Map ko ProductCard object mein convert karo
+  final product = ProductCard(
+    id: favMap['id'],
+    title: favMap['title'],
+    subtitle: favMap['subtitle'],
+    price: favMap['price'],
+    imageUrl: favMap['imageUrl'],
+    isNew: false, // ya jo bhi
+    addToCart: () {}, // dummy, baad mein override nahi karenge
+    // agar aur fields hain jaise quantity, wo bhi add karo
+  );
+
+  return ProductCard(
+    id: product.id,
+    title: product.title,
+    subtitle: product.subtitle,
+    price: product.price,
+    imageUrl: product.imageUrl,
+    isNew: false,
+    addToCart: () {
+      // Ab ProductCard object pass kar rahe ho
+      Provider.of<HomeMainLogic>(context, listen: false).addToCart(product);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('${product.title} added to cart!')),
+      );
+    },
+  );
+},
+            
           );
         },
       ),

@@ -1,5 +1,8 @@
 
+import 'package:cartapp/core/app_textstyle.dart';
+import 'package:cartapp/utils/splash_button.dart';
 import 'package:cartapp/viewmodels/bottom_bar/home_main_logic.dart';
+import 'package:cartapp/views/home_screens/form_filling.dart';
 import 'package:cartapp/views/home_screens/widgets/home_itemCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -88,9 +91,98 @@ class AddTocart extends StatelessWidget {
               },
             ),
           ),
-        ],
-      ),
-    );
+
+         Consumer<HomeMainLogic>(
+           builder: (context, cartLogic, child) {
+             final cartItems = cartLogic.addToCartedProducts;
+         
+             if (cartItems.isNotEmpty) {
+               return Padding(
+                 padding: const EdgeInsets.only(bottom: 150),
+                 child: Container(
+                   padding: const EdgeInsets.all(16),
+                   color: Colors.white,
+                   child: Column(
+                     children: [
+
+ Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: [
+                           Text(
+                    'Charges',
+                    style:  appTextTheme.labelMedium
+                  ),
+                           
+                            Text(
+                                 '\$5.00',
+                                 style:appTextTheme.labelMedium
+                               
+                             
+                           ),
+                         ],
+                       ),
+
+
+
+
+
+                     /////////////////////
+
+                     Divider(color: Colors.green),
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: [
+                           const Text(
+                             'Total:',
+                             style: TextStyle(
+                               fontSize: 18,
+                               fontWeight: FontWeight.w600,
+                             ),
+                           ),
+                           Consumer<HomeMainLogic>(
+                             builder: (context, cartLogic, child) {
+                               final totalPrice = cartLogic.addToCartedProducts.fold<double>(
+                                 0.0,
+                                 (sum, item) =>
+                                     sum + (item.price * (item.quantity ?? 1)),
+                               );
+                               return Text(
+                                 '\$${totalPrice.toStringAsFixed(2)}',
+                                 style: const TextStyle(
+                                   fontSize: 18,
+                                   fontWeight: FontWeight.w600,
+                                   color: Colors.green,
+                                 ),
+                               );
+                             },
+                           ),
+                         ],
+                       ),
+                       const SizedBox(height: 20),
+                       SplashButton(
+                         onTap: () {
+                           Navigator.push(context, MaterialPageRoute(builder: (_) => const CheckoutScreen()));
+                         },
+                         width: double.infinity,
+                         height: 56,
+                         child: Text('Checkout', style: TextStyle(
+                           fontFamily: 'Poppins',
+                           fontWeight: FontWeight.bold,
+                           color: Colors.white,
+                           fontSize: 15,
+                         )),
+                       ),
+                     ],
+                   ),
+                 ),
+               );
+             }
+             return const SizedBox.shrink();
+           },
+         ),
+      ],
+    ),
+  );
   }
 }
 
@@ -109,28 +201,42 @@ class _CartItemTile extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: Slidable(
         key: ValueKey(product.id ?? index),
-        endActionPane: ActionPane(
-          motion: const ScrollMotion(),
+       endActionPane: ActionPane(
+  motion: const ScrollMotion(),
+  extentRatio: 0.30, // Yeh sabse important! Sirf 15% swipe pe delete dikhega → bahut chhota area
+  children: [
+    CustomSlidableAction(
+      onPressed: (context) {
+        context.read<HomeMainLogic>().removeFromCart(index);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${product.title} removed from cart'),
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      },
+      child: Container(
+        width: 70, // Chhota fixed width
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SlidableAction(
-              onPressed: (context) {
-                // Remove from cart
-                context.read<HomeMainLogic>().removeFromCart(index);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('${product.title} removed from cart'),
-                    duration: const Duration(seconds: 2),
-                  ),
-                );
-              },
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
-              icon: Icons.delete,
-              label: 'Delete',
-              spacing: 8,
+            Icon(Icons.delete, color: Colors.white, size: 26),
+            SizedBox(height: 4),
+            Text(
+              'Delete',
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
           ],
         ),
+      ),
+    ),
+  ],
+),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,

@@ -1,30 +1,32 @@
 import 'package:cartapp/core/app_colors.dart';
-import 'package:cartapp/widgets/custum_button.dart'; // Import the custom button
+import 'package:cartapp/utils/splash_button.dart';
+import 'package:cartapp/viewmodels/bottom_bar/home_main_logic.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final String? productImage;
   final String? productName;
-  final double? productPrice ;
-   final String? productWeight;
-   final String? productDescription;
-  const ProductDetailsScreen({super.key, this.productImage, this.productName, this.productPrice, this.productWeight, this.productDescription});
+  final double? productPrice;
+  final String? productWeight;
+  final String? productDescription;
+
+  const ProductDetailsScreen({
+    super.key,
+    this.productImage,
+    this.productName,
+    this.productPrice,
+    this.productWeight,
+    this.productDescription,
+  });
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  int _itemCount = 1; // For the quantity selector
+  int _itemCount = 1;
   bool _showFullDescription = false;
-
-  // // Placeholder data for product details
-  // final String _productImage = AppImages.aocado;
-  // final String _productName = 'Fresh Peach';
-  // final double _productPrice = 12.99;
-  // final String _productWeight = '1.5 lbs';
-  // final String _productDescription =
-  //     'A fresh and juicy peach, hand-picked for quality. Perfect for snacks, desserts, or adding to your favorite recipes. Rich in vitamins and natural sweetness. Enjoy the taste of summer all year round.';
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Center Image
+            // Product Image
             Center(
               child: SizedBox(
                 height: 324,
@@ -44,6 +46,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 child: Image.asset(
                   widget.productImage!,
                   fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.image_not_supported, size: 100);
+                  },
                 ),
               ),
             ),
@@ -58,9 +63,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   Text(
                     '\$${widget.productPrice!.toStringAsFixed(2)}',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.primary, // Light green color
+                      color: AppColors.primary,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -69,13 +74,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   Text(
                     widget.productName!,
                     style: const TextStyle(
-                      fontSize: 28,
+                      fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
 
-                  // Quantity/Weight
+                  // Weight
                   Text(
                     widget.productWeight!,
                     style: TextStyle(
@@ -83,97 +88,109 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       color: Colors.grey[600],
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
 
-                  // 5-Star Rating
+                  // Rating
                   Row(
                     children: List.generate(5, (index) {
                       return Icon(
                         Icons.star,
-                        color: index < 4 ? Colors.amber : Colors.grey.shade400, // Example 4 out of 5 stars
-                        size: 20,
+                        color: index < 4 ? Colors.amber : Colors.grey.shade300,
+                        size: 22,
                       );
                     }),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 24),
 
-                  // Product Detail (max 6 lines + "Read More")
+                  // Description with Read More
                   Text(
                     widget.productDescription!,
                     maxLines: _showFullDescription ? null : 6,
                     overflow: _showFullDescription ? TextOverflow.visible : TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 15,
+                      height: 1.5,
                       color: Colors.grey[800],
                     ),
                   ),
-                  if (widget.productDescription!.length > 6 * 20 && !_showFullDescription) // Simple check for long text
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _showFullDescription = true;
-                          });
-                        },
-                        child: Text(
-                          'Read More',
-                          style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  const SizedBox(height: 20),
 
-                  // Quality/Quantity Selector
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Quality',
+                  // Read More Button (only if text is long)
+                  if (!_showFullDescription &&
+                      (widget.productDescription!.length > 200)) // Better check
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _showFullDescription = true;
+                        });
+                      },
+                      child: Text(
+                        'Read More',
                         style: TextStyle(
-                          fontSize: 18,
+                          color: AppColors.primary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Row(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.remove_circle_outline, color: AppColors.primary),
-                            onPressed: () {
-                              setState(() {
-                                if (_itemCount > 1) _itemCount--;
-                              });
-                            },
-                          ),
-                          Text(
-                            '$_itemCount',
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.add_circle_outline, color: AppColors.primary),
-                            onPressed: () {
-                              setState(() {
-                                _itemCount++;
-                              });
-                            },
-                          ),
-                        ],
+                    ),
+
+                  if (_showFullDescription)
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _showFullDescription = false;
+                        });
+                      },
+                      child: const Text(
+                        'Show Less',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+
+              
                   const SizedBox(height: 30),
 
-                  // Custom Button
-                  GradientButton(
-                    text: 'Add to Cart',
-                    onTap: () {
-                      // Handle add to cart logic
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Added $_itemCount of ${widget.productName} to cart!')),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 20),
+                  // Add to Cart Button (Consumer bahar, button andar)
+                  // Consumer<HomeMainLogic>(
+                  //   builder: (context, logic, child) {
+                  //     return SplashButton(
+                  //       onTap: () {
+                  //         // Add product with quantity
+                  //         final productData = {
+                  //           'id': widget.productName, // Better to use unique ID if possible
+                  //           'title': widget.productName,
+                  //           'subtitle': widget.productWeight,
+                  //           'price': widget.productPrice,
+                  //           'imageUrl': widget.productImage,
+                  //           'quantity': _itemCount, // Quantity add ki!
+                  //         };
+
+                  //         logic.addToCart(productData);
+
+                  //         ScaffoldMessenger.of(context).showSnackBar(
+                  //           SnackBar(
+                  //             content: Text('Added $_itemCount × ${widget.productName} to cart!'),
+                  //             duration: const Duration(seconds: 2),
+                  //           ),
+                  //         );
+                  //       },
+                  //       width: double.infinity,
+                  //       height: 56,
+                  //       child: const Text(
+                  //         'Add to Cart',
+                  //         style: TextStyle(
+                  //           fontFamily: 'Poppins',
+                  //           fontWeight: FontWeight.bold,
+                  //           color: Colors.white,
+                  //           fontSize: 18,
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+
+                  const SizedBox(height: 40),
                 ],
               ),
             ),

@@ -23,9 +23,9 @@ class HomeMainLogic extends ChangeNotifier {
   }
 
 
-   List<ProductCard> addToCartedProducts = []; // cart list
+   List<dynamic> addToCartedProducts = []; // cart list
 
-  void addToCart(ProductCard product) {
+  void addToCart(product) {
   // Check if product already in cart
   var index = addToCartedProducts.indexWhere((p) => p.id == product.id);
 

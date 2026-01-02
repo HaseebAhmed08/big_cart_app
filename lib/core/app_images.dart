@@ -37,7 +37,9 @@ class AppImages {
   static const String grapes = 'assets/images/grapes.png';        
   static const String peach = 'assets/images/peach.png';        
   static const String pineapple = 'assets/images/pineapple.png';        
-  static const String pomegranate = 'assets/images/pomegranate.png';        
+  static const String pomegranate = 'assets/images/pomegranate.png';  
+    static const String congrates = 'assets/images/congrates.png';        
+      
 
 
 }
