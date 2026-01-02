@@ -97,74 +97,107 @@ class HomeScreen extends StatelessWidget {
                 _buildSectionTitle('Featured products',(){Navigator.pushNamed(context, '/featured_products');}),
                 const SizedBox(height: 16),
 
-                // Grid of Products
-                GridView.count(
-  shrinkWrap: true,
-  physics: const NeverScrollableScrollPhysics(),
+  //               // Grid of Products
+  //               GridView.count(
+  // shrinkWrap: true,
+  // physics: const NeverScrollableScrollPhysics(),
+  // crossAxisCount: 2,
+  // mainAxisSpacing: 16,
+  // crossAxisSpacing: 16,
+  // childAspectRatio: 0.774, // width / height — tweak as needed
+  // children: [
+
+  //                   ProductCard(
+  //                     imageUrl: AppImages.aocado,
+  //                     badge: null,
+  //                     isNew: false,
+  //                     title: 'Fresh Peach', 
+  //                     subtitle: 'dozen',
+  //                     price: 12.99,
+  //                     discount: null,
+  //                   ),
+  //                   ProductCard(
+  //                     imageUrl: AppImages.broccoli,
+  //                     badge: null,
+  //                     isNew: true,
+  //                     title: 'Avocado',
+  //                     subtitle: '2.0 lbs',
+  //                     price: 7.00,
+  //                     discount: null,
+  //                   ),
+  //                   ProductCard(
+  //                     imageUrl: AppImages.grapes,
+  //                     badge: null,
+  //                     isNew: false,
+  //                     title: 'Pineapple',
+  //                     subtitle: '1.50 lbs',
+  //                     price: 3.90,
+  //                     discount: null,
+  //                   ),
+  //                   ProductCard(
+  //                     imageUrl: AppImages.peach,
+  //                     badge: null,
+  //                     isNew: false,
+  //                     title: 'Black Grapes',
+  //                     subtitle: '5.0 lbs',
+  //                     price: 7.05,
+  //                     discount: '-16%',
+  //                   ),
+  //                   ProductCard(
+  //                     imageUrl: 'assets/images/pomegranate.png',
+  //                     badge: null,
+  //                     isNew: true,
+  //                     title: 'Pomegranate',
+  //                     subtitle: '1.50 lbs',
+  //                     price: 2.09,
+  //                     discount: null,
+  //                   ),
+  //                   ProductCard(
+  //                     imageUrl: AppImages.broccoli,
+  //                     badge: null,
+  //                     isNew: false,
+  //                     title: 'Fresh Broccoli',
+  //                     subtitle: '1 kg',
+  //                     price: 3.00,
+  //                     discount: null,
+  //                   ),
+  //                 ],
+  //               ),
+
+
+Consumer<HomeMainLogic>(
+  builder: (context, logic, child) {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: logic.products.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        // crossAxisCount: 2,
+  // physics: const NeverScrollableScrollPhysics(),
   crossAxisCount: 2,
   mainAxisSpacing: 16,
   crossAxisSpacing: 16,
   childAspectRatio: 0.774, // width / height — tweak as needed
-  children: [
+      ),
+      itemBuilder: (context, index) {
+        final product = logic.products[index];
 
-                    ProductCard(
-                      imageUrl: AppImages.aocado,
-                      badge: null,
-                      isNew: false,
-                      title: 'Fresh Peach', 
-                      subtitle: 'dozen',
-                      price: 12.99,
-                      discount: null,
-                    ),
-                    ProductCard(
-                      imageUrl: AppImages.broccoli,
-                      badge: null,
-                      isNew: true,
-                      title: 'Avocado',
-                      subtitle: '2.0 lbs',
-                      price: 7.00,
-                      discount: null,
-                    ),
-                    ProductCard(
-                      imageUrl: AppImages.grapes,
-                      badge: null,
-                      isNew: false,
-                      title: 'Pineapple',
-                      subtitle: '1.50 lbs',
-                      price: 3.90,
-                      discount: null,
-                    ),
-                    ProductCard(
-                      imageUrl: AppImages.peach,
-                      badge: null,
-                      isNew: false,
-                      title: 'Black Grapes',
-                      subtitle: '5.0 lbs',
-                      price: 7.05,
-                      discount: '-16%',
-                    ),
-                    ProductCard(
-                      imageUrl: 'assets/images/pomegranate.png',
-                      badge: null,
-                      isNew: true,
-                      title: 'Pomegranate',
-                      subtitle: '1.50 lbs',
-                      price: 2.09,
-                      discount: null,
-                    ),
-                    ProductCard(
-                      imageUrl: AppImages.broccoli,
-                      badge: null,
-                      isNew: false,
-                      title: 'Fresh Broccoli',
-                      subtitle: '1 kg',
-                      price: 3.00,
-                      discount: null,
-                    ),
-                  ],
-                ),
+        return ProductCard(
+          id: product.id,
+          imageUrl: product.imageUrl,
+          badge: product.badge,
+          isNew: product.isNew,
+          title: product.title, 
+          subtitle: product.subtitle,
+          price: product.price,
+          discount: product.discount,
+        );
+      },
+    );
+  },
+),
 
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
               ],
             ),
           ),
