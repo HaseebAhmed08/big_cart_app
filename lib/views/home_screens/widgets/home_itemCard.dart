@@ -12,6 +12,7 @@ class ProductCard extends StatelessWidget {
   final String subtitle;
   final double price;
   final String? discount;
+  final VoidCallback? addToCart;
 
   const ProductCard({
     super.key,
@@ -22,7 +23,8 @@ class ProductCard extends StatelessWidget {
     required this.subtitle,
     required this.price,
     this.discount,
-    this.id,
+    this.id, 
+    this.addToCart,
   });
 
   @override
@@ -46,6 +48,7 @@ class ProductCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             /// IMAGE + BADGES
             SizedBox(
@@ -173,11 +176,14 @@ class ProductCard extends StatelessWidget {
                   color: AppColors.primary,
                 ),
                 const SizedBox(width: 6),
-                Text(
-                  'Add to cart',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: AppColors.black,
+                InkWell(
+                  onTap: addToCart,
+                  child: Text(
+                    'Add to cart',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: AppColors.black,
+                    ),
                   ),
                 ),
               ],

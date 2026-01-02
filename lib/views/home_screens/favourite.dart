@@ -22,11 +22,14 @@ class Favorite extends StatelessWidget {
 
           return GridView.builder(
             padding: const EdgeInsets.all(12),
+                  physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-              childAspectRatio: 0.65,
+                crossAxisCount: 2,
+  mainAxisSpacing: 16,
+  crossAxisSpacing: 16,
+  childAspectRatio: 0.774,
             ),
             itemCount: favProducts.length,
             itemBuilder: (context, index) {
@@ -38,6 +41,7 @@ class Favorite extends StatelessWidget {
                 price: product['price'],
                 imageUrl: product['imageUrl'],
                 isNew: false,
+                
               );
             },
           );

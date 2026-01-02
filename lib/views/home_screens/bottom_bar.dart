@@ -2,6 +2,7 @@
 // home_main.dart (Refined)
 import 'package:cartapp/core/app_colors.dart';
 import 'package:cartapp/viewmodels/bottom_bar/bottom_bar_logic.dart';
+import 'package:cartapp/views/home_screens/add_tocart.dart';
 import 'package:cartapp/views/home_screens/favourite.dart';
 import 'package:cartapp/views/home_screens/home.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class BottomBar extends StatelessWidget {
           HomeScreen(),
           Center(child: Text("Profile Screen", style: TextStyle(fontSize: 20))),
           Favorite(),
+          AddTocart()
         ],
       ),
 

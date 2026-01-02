@@ -23,14 +23,17 @@ class HomeMainLogic extends ChangeNotifier {
   }
 
 
+   List<Map<String, dynamic>> addToCartedProducts = [];
+
+
   List<Map<String, dynamic>> get favoriteProducts {
     return [
-      {"id": "p1", "imageUrl": AppImages.aocado, "title": "Fresh Peach", "subtitle": "dozen", "price": 12.99, "isNew": false, "badge": null, "discount": null},
-      {"id": "p2", "imageUrl": AppImages.broccoli, "title": "Avocado", "subtitle": "2.0 lbs", "price": 7.00, "isNew": true, "badge": null, "discount": null},
-      {"id": "p3", "imageUrl": AppImages.grapes, "title": "Pineapple", "subtitle": "1.50 lbs", "price": 3.90, "isNew": false, "badge": null, "discount": null},
-      {"id": "p4", "imageUrl": AppImages.peach, "title": "Black Grapes", "subtitle": "5.0 lbs", "price": 7.05, "isNew": false, "badge": null, "discount": "-16%"},
-      {"id": "p5", "imageUrl": "assets/images/pomegranate.png", "title": "Pomegranate", "subtitle": "1.50 lbs", "price": 2.09, "isNew": true, "badge": null, "discount": null},
-      {"id": "p6", "imageUrl": AppImages.broccoli, "title": "Fresh Broccoli", "subtitle": "1 kg", "price": 3.00, "isNew": false, "badge": null, "discount": null},
+      {"id": "p1", "imageUrl": AppImages.aocado, "title": "Fresh Peach", "subtitle": "dozen", "price": 12.99, "isNew": false, "badge": null, "discount": null,"quantity":0},
+      {"id": "p2", "imageUrl": AppImages.broccoli, "title": "Avocado", "subtitle": "2.0 lbs", "price": 7.00, "isNew": true, "badge": null, "discount": null,"quantity":0},
+      {"id": "p3", "imageUrl": AppImages.grapes, "title": "Pineapple", "subtitle": "1.50 lbs", "price": 3.90, "isNew": false, "badge": null, "discount": null,"quantity":0},
+      {"id": "p4", "imageUrl": AppImages.peach, "title": "Black Grapes", "subtitle": "5.0 lbs", "price": 7.05, "isNew": false, "badge": null, "discount": "-16%","quantity":0},
+      {"id": "p5", "imageUrl": "assets/images/pomegranate.png", "title": "Pomegranate", "subtitle": "1.50 lbs", "price": 2.09, "isNew": true, "badge": null, "discount": null,"quantity":0},
+      {"id": "p6", "imageUrl": AppImages.broccoli, "title": "Fresh Broccoli", "subtitle": "1 kg", "price": 3.00, "isNew": false, "badge": null, "discount": null,"quantity":0},
     ].where((p) => _favorites[p['id']] ?? false).toList();
   }
 
