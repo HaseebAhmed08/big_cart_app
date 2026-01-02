@@ -1,10 +1,14 @@
 import 'package:cartapp/core/app_colors.dart';
-import 'package:cartapp/core/app_images.dart';
 import 'package:cartapp/widgets/custum_button.dart'; // Import the custom button
 import 'package:flutter/material.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({super.key});
+  final String? productImage;
+  final String? productName;
+  final double? productPrice ;
+   final String? productWeight;
+   final String? productDescription;
+  const ProductDetailsScreen({super.key, this.productImage, this.productName, this.productPrice, this.productWeight, this.productDescription});
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -14,13 +18,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int _itemCount = 1; // For the quantity selector
   bool _showFullDescription = false;
 
-  // Placeholder data for product details
-  final String _productImage = AppImages.aocado;
-  final String _productName = 'Fresh Peach';
-  final double _productPrice = 12.99;
-  final String _productWeight = '1.5 lbs';
-  final String _productDescription =
-      'A fresh and juicy peach, hand-picked for quality. Perfect for snacks, desserts, or adding to your favorite recipes. Rich in vitamins and natural sweetness. Enjoy the taste of summer all year round.';
+  // // Placeholder data for product details
+  // final String _productImage = AppImages.aocado;
+  // final String _productName = 'Fresh Peach';
+  // final double _productPrice = 12.99;
+  // final String _productWeight = '1.5 lbs';
+  // final String _productDescription =
+  //     'A fresh and juicy peach, hand-picked for quality. Perfect for snacks, desserts, or adding to your favorite recipes. Rich in vitamins and natural sweetness. Enjoy the taste of summer all year round.';
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 height: 324,
                 width: 324,
                 child: Image.asset(
-                  _productImage,
+                  widget.productImage!,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -52,7 +56,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 children: [
                   // Price
                   Text(
-                    '\$${_productPrice.toStringAsFixed(2)}',
+                    '\$${widget.productPrice!.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -63,7 +67,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                   // Product Name
                   Text(
-                    _productName,
+                    widget.productName!,
                     style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -73,7 +77,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                   // Quantity/Weight
                   Text(
-                    _productWeight,
+                    widget.productWeight!,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[600],
@@ -95,7 +99,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                   // Product Detail (max 6 lines + "Read More")
                   Text(
-                    _productDescription,
+                    widget.productDescription!,
                     maxLines: _showFullDescription ? null : 6,
                     overflow: _showFullDescription ? TextOverflow.visible : TextOverflow.ellipsis,
                     style: TextStyle(
@@ -103,7 +107,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       color: Colors.grey[800],
                     ),
                   ),
-                  if (_productDescription.length > 6 * 20 && !_showFullDescription) // Simple check for long text
+                  if (widget.productDescription!.length > 6 * 20 && !_showFullDescription) // Simple check for long text
                     Align(
                       alignment: Alignment.centerLeft,
                       child: TextButton(
@@ -165,7 +169,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     onTap: () {
                       // Handle add to cart logic
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Added $_itemCount of $_productName to cart!')),
+                        SnackBar(content: Text('Added $_itemCount of ${widget.productName} to cart!')),
                       );
                     },
                   ),

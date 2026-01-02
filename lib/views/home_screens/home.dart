@@ -1,6 +1,7 @@
 import 'package:cartapp/core/app_images.dart';
 import 'package:cartapp/core/app_textstyle.dart';
 import 'package:cartapp/viewmodels/bottom_bar/home_main_logic.dart';
+import 'package:cartapp/views/home_screens/product_details.dart';
 import 'package:cartapp/views/home_screens/widgets/home_itemCard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                                         width: 40,
                                       child: Image.asset(
                                        logic.categoryImages[index],
-                                        
+
                                         fit: BoxFit.contain,
                                       ),
                                     ),
@@ -119,10 +120,25 @@ Consumer<HomeMainLogic>(
           imageUrl: product.imageUrl,
           badge: product.badge,
           isNew: product.isNew,
-          title: product.title, 
+          title: product.title,
           subtitle: product.subtitle,
           price: product.price,
           discount: product.discount,
+          onProductTap: () {
+            // Navigate to ProductDetailsScreen with product data
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductDetailsScreen(
+                  productImage: product.imageUrl,
+                  productName: product.title,
+                  productPrice: product.price,
+                  productWeight: product.subtitle,
+                  productDescription: 'A fresh and high-quality ${product.title}, perfect for your daily needs. This product is carefully selected to ensure maximum freshness and taste. Enjoy the natural goodness in every bite. Ideal for healthy snacking, cooking, or adding to your favorite recipes.',
+                ),
+              ),
+            );
+          },
           addToCart: () {
 Provider.of<HomeMainLogic>(context, listen: false).addToCart(product);
     ScaffoldMessenger.of(context).showSnackBar(

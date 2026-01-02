@@ -13,6 +13,7 @@ class ProductCard extends StatelessWidget {
   final double price;
   final String? discount;
   final VoidCallback? addToCart;
+  final VoidCallback? onProductTap;
   int? quantity;
 
    ProductCard({
@@ -24,8 +25,9 @@ class ProductCard extends StatelessWidget {
     required this.subtitle,
     required this.price,
     this.discount,
-    this.id, 
+    this.id,
     this.addToCart,
+    this.onProductTap,
      this.quantity =1,
   });
 
@@ -33,7 +35,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/product_details');
+        if (onProductTap != null) {
+          onProductTap!();
+        } else {
+          Navigator.pushNamed(context, '/product_details');
+        }
       },
       child: Container(
         padding: const EdgeInsets.all(12),
