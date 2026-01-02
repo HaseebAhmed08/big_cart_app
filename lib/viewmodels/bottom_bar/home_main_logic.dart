@@ -23,7 +23,47 @@ class HomeMainLogic extends ChangeNotifier {
   }
 
 
-   List<Map<String, dynamic>> addToCartedProducts = [];
+   List<ProductCard> addToCartedProducts = []; // cart list
+
+  void addToCart(ProductCard product) {
+  // Check if product already in cart
+  var index = addToCartedProducts.indexWhere((p) => p.id == product.id);
+
+  if (index != -1) {
+    // Product already in cart → quantity increase
+    addToCartedProducts[index].quantity = (addToCartedProducts[index].quantity ?? 0) + 1;
+  } else {
+    // Product not in cart → add new
+    addToCartedProducts.add(product);
+    product.quantity = 1; // default, just to be safe
+  }
+
+  notifyListeners(); // UI update
+}
+
+  void incrementQuantity(int index) {
+    if (index >= 0 && index < addToCartedProducts.length) {
+      addToCartedProducts[index].quantity = (addToCartedProducts[index].quantity ?? 1) + 1;
+      notifyListeners();
+    }
+  }
+
+  void decrementQuantity(int index) {
+    if (index >= 0 && index < addToCartedProducts.length) {
+      if (addToCartedProducts[index].quantity != null &&
+          addToCartedProducts[index].quantity! > 1) {
+        addToCartedProducts[index].quantity = addToCartedProducts[index].quantity! - 1;
+        notifyListeners();
+      }
+    }
+  }
+
+  void removeFromCart(int index) {
+    if (index >= 0 && index < addToCartedProducts.length) {
+      addToCartedProducts.removeAt(index);
+      notifyListeners();
+    }
+  }
 
 
   List<Map<String, dynamic>> get favoriteProducts {
@@ -47,6 +87,7 @@ final List<ProductCard> products = [
     isNew: false,
     badge: null,
     discount: null,
+    
   ),
   ProductCard(
     id: 'p2',

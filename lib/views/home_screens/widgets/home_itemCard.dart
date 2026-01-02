@@ -13,8 +13,9 @@ class ProductCard extends StatelessWidget {
   final double price;
   final String? discount;
   final VoidCallback? addToCart;
+  int? quantity;
 
-  const ProductCard({
+   ProductCard({
     super.key,
     required this.imageUrl,
     this.badge,
@@ -25,6 +26,7 @@ class ProductCard extends StatelessWidget {
     this.discount,
     this.id, 
     this.addToCart,
+     this.quantity =1,
   });
 
   @override

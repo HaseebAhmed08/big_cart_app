@@ -124,6 +124,12 @@ Consumer<HomeMainLogic>(
           price: product.price,
           discount: product.discount,
           addToCart: () {
+Provider.of<HomeMainLogic>(context, listen: false).addToCart(product);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('${product.title} added to cart!')),
+    );
+
+    print('${product.title} added to cart! Quantity: ${product.quantity}');
           },
         );
       },
